@@ -79,6 +79,13 @@ class SocialSharingButtons extends BlockBase implements ContainerFactoryPluginIn
           'enable_attribute' => '',
           'rel_attributes' => '',
           'id_attribute' => '',
+          'tokens' => [
+            'enable' => '',
+            'title' => '',
+            'description' => '',
+            'url' => '',
+            'image_uri' => '',
+          ],
         ],
         'big_social_facebook_appid' => '',
         'big_social_chosen' => $this->chosen,
@@ -98,7 +105,7 @@ class SocialSharingButtons extends BlockBase implements ContainerFactoryPluginIn
       '#title' => $this->t('Share buttons'),
     ];
 
-    /*$form += $this->tokenService->tokenBrowser([]);*/
+    $form += $this->tokenService->tokenBrowser(['node', 'user']);
     $form['big_social_share']['general'] = [
       '#type' => 'details',
       '#open' => FALSE,
@@ -150,6 +157,62 @@ class SocialSharingButtons extends BlockBase implements ContainerFactoryPluginIn
       ],
     ];
 
+    $form['big_social_share']['general']['tokens'] = [
+      '#type' => 'details',
+      '#open' => FALSE,
+      '#title' => $this->t('Manage tokens for getting node-fields for sharing links'),
+    ];
+
+    $form['big_social_share']['general']['tokens']['enable'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Enable tokens'),
+      '#default_value' => $this->configuration['big_social_share']['general']['tokens']['enable'],
+    ];
+
+    $form['big_social_share']['general']['tokens']['description'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('description'),
+      '#default_value' => $this->configuration['big_social_share']['general']['tokens']['description'],
+      '#states' => [
+        'invisible' => [
+          ':input[name="settings[big_social_share][general][tokens][enable]"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
+    $form['big_social_share']['general']['tokens']['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('title'),
+      '#default_value' => $this->configuration['big_social_share']['general']['tokens']['title'],
+      '#states' => [
+        'invisible' => [
+          ':input[name="settings[big_social_share][general][tokens][enable]"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
+    $form['big_social_share']['general']['tokens']['url'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('url'),
+      '#default_value' => $this->configuration['big_social_share']['general']['tokens']['url'],
+      '#states' => [
+        'invisible' => [
+          ':input[name="settings[big_social_share][general][tokens][enable]"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
+    $form['big_social_share']['general']['tokens']['image_uri'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('image_uri'),
+      '#default_value' => $this->configuration['big_social_share']['general']['tokens']['image_uri'],
+      '#states' => [
+        'invisible' => [
+          ':input[name="settings[big_social_share][general][tokens][enable]"]' => ['checked' => FALSE],
+        ],
+      ],
+    ];
+
     $form['big_social_share']['big_social_chosen'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('Which buttons would you like to enable?'),
@@ -185,17 +248,23 @@ class SocialSharingButtons extends BlockBase implements ContainerFactoryPluginIn
   public function getNode() {
     /** @var \Drupal\node\NodeInterface $node */
     $node = $this->currentRouteMatch->getParameter('node');
-    if ($node instanceof Node) {
+    if ($node instanceof Node && $this->configuration['big_social_share']['general']['tokens']['enable']) {
       return [
-        // TODO: Need to figure out which of the fields will be using.
-        // For now it's just tile fields.
-        'url' => $node->toUrl()->setAbsolute(TRUE)->toString(),
-        'title' => $node->getTitle(),
-        'image_uri' => $node->hasField('field_tile_image') ? $node->get('field_tile_image')
-          ->getValue() : '',
-        'description' => $node->hasField('field_tile_text') ? $node->get('field_tile_text')->value : '',
+        'url' => $this->tokenService->replace($this->configuration['big_social_share']['general']['tokens']['url'], ['node' => $node]),
+        'title' => $this->tokenService->replace($this->configuration['big_social_share']['general']['tokens']['title'], ['node' => $node]),
+        'image_uri' => $this->tokenService->replace($this->configuration['big_social_share']['general']['tokens']['image_uri'], ['node' => $node]),
+        'description' => $this->tokenService->replace($this->configuration['big_social_share']['general']['tokens']['description'], ['node' => $node]),
       ];
     }
+    return [
+      // TODO: Need to figure out which of the fields will be using.
+      // For now it's just tile fields.
+      'url' => $node->toUrl()->setAbsolute(TRUE)->toString(),
+      'title' => $node->getTitle(),
+      'image_uri' => $node->hasField('field_tile_image') ? $node->get('field_tile_image')
+        ->getValue() : '',
+      'description' => $node->hasField('field_tile_text') ? $node->get('field_tile_text')->value : '',
+    ];
   }
 
   /**
