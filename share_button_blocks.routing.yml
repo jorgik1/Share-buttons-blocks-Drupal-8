@@ -1,0 +1,9 @@
+
+share_button_blocks.share_button_blocks_settings:
+  path: '/admin/config/content/social'
+  defaults:
+    _form: '\Drupal\share_button_blocks\Form\ShareButtonBlocksSettings'
+    _title: 'Share Button Blocks Settings'
+  requirements:
+    _permission: 'administer share blocks'
+  

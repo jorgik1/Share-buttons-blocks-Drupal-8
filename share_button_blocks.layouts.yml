@@ -1,0 +1,90 @@
+email:
+  label: Email button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/email
+  css: email.css
+  icon: email.png
+  template: email
+  regions:
+    main:
+      label: Main
+facebook:
+  label: Facebook button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/facebook
+  css: facebook.css
+  icon: facebook.png
+  template: facebook
+  regions:
+    main:
+      label: Main
+linkedin:
+  label: linkedin button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/linkedin
+  css: linkedin.css
+  icon: linkedin.png
+  template: linkedin
+  regions:
+    main:
+      label: Main
+twitter:
+  label: twitter button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/twitter
+  css: twitter.css
+  icon: twitter.png
+  template: twitter
+  regions:
+    main:
+      label: Main
+googleplus:
+  label: googleplus button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/googleplus
+  css: googleplus.css
+  icon: googleplus.png
+  template: googleplus
+  regions:
+    main:
+      label: Main
+pinterest:
+  label: pinterest button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/pinterest
+  css: pinterest.css
+  icon: pinterest.png
+  template: pinterest
+  regions:
+    main:
+      label: Main
+tumblr:
+  label: tumblr button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/tumblr
+  css: tumblr.css
+  icon: tumblr.png
+  template: tumblr
+  regions:
+    main:
+      label: Main
+reddit:
+  label: reddit button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/reddit
+  css: reddit.css
+  icon: reddit.png
+  template: reddit
+  regions:
+    main:
+      label: Main
+print:
+  label: print button template
+  category: 'Buttons layouts'
+  path: templates/buttons_layout/print
+  css: print.css
+  icon: print.png
+  template: print
+  regions:
+    main:
+      label: Main

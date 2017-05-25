@@ -1,0 +1,8 @@
+<div{{ attributes.setAttribute('class', 'big-social-media big-social-media--share ' ~ style|clean_class ).setAttribute('id', 'bigSocialMediaShare') }}>
+    <h3 class="big-social-media__title">{{ title }}</h3>
+    <ul{{ attributes.setAttribute('class', ul_attributes).removeAttribute('id') }}>
+        {% for layout in layouts %}
+            {{ layout }}
+        {% endfor %}
+    </ul>
+</div>

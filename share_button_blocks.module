@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Contains share_button_blocks.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function share_button_blocks_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the share_button_blocks module.
+    case 'help.page.share_button_blocks':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Add of blocks with share buttons') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function share_button_blocks_theme() {
+  return [
+    'share_follow_block' => [
+      'variables' => [
+        'wrapper_class' => NULL,
+        'links' => NULL,
+        'ul_attributes' => NULL,
+        'title' => NULL,
+      ],
+    ],
+    'sharing_block' => [
+      'variables' => [
+        'style' => NULL,
+        'ul_attributes' => NULL,
+        'title' => NULL,
+        'layouts' => NULL,
+      ],
+    ],
+  ];
+}

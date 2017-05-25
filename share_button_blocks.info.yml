@@ -1,0 +1,5 @@
+name: Share Button Blocks
+type: module
+description: Add of blocks with share buttons
+core: 8.x
+package: Custom

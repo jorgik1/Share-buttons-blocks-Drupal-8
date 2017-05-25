@@ -1,0 +1,11 @@
+share_follow:
+  version: VERSION
+  js:
+    js/big_social.js: {}
+  css:
+    component:
+      css/big_social.min.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupalSettings

@@ -1,0 +1,14 @@
+{
+  "name": "drupal/share_button_blocks",
+  "type": "drupal-module",
+  "description": "Add of blocks with share buttons",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/share_button_blocks",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/share_button_blocks",
+    "source": "http://cgit.drupalcode.org/share_button_blocks"
+  },
+  "require": { }
+}

@@ -1,0 +1,35 @@
+{#
+
+@file
+  Template for sharring button.
+  This template provides markup for unique link for content sharing button.
+   Variables:
+   - settings.link_class - contain a link name (like: email, facebook etc).Using for a css class attribute and as title of icon.
+   - settings.link  - array of current node parametrs.
+     - settings.link.url - current node url.
+     - settings.link.title - current node title.
+     - settings.link.description - current node body.
+     - settings.link.image - current node image uri.
+  - settings.link_id - link attribute (the same for each link)
+  - settings.link_rel -link attribute (the same for each link)
+#}
+
+{% set li_class = [
+'big-social-media__item',
+'big-social-media__item--' ~ settings.link_class|clean_class
+] %}
+<li{{ attributes.setAttribute('class', li_class) }}>
+    <a class="big-social-media__btn" href="javascript:window.print()">
+                    <span class="big-social-media__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="48px" height="42px"
+                         viewBox="0 0 48 42">
+                    <title>print icon</title>
+                        <rect x="10" width="28" height="8"/>
+                        <path d="M0,10v17.75h10V42h28V27.75h10V10H0z M34,38H14V24h20V38z M42,20c-1.66,0-3-1.34-3-3s1.34-3,3-3s3,1.34,3,3S43.66,20,42,20z"/>
+                        <text transform="matrix(1 0 0 1 6 78)" font-size="10">Created by Plainicon</text>
+                        <text transform="matrix(1 0 0 1 6 88)" font-size="10">from the Noun Project</text>
+                     </svg>
+                     </span>
+        <span class="big-social-media__label">Print</span>
+    </a>
+</li>

@@ -1,0 +1,19 @@
+{% set li_class = [
+'big-social-media__item',
+'big-social-media__item--' ~ settings.link_class|clean_class
+] %}
+<li{{ attributes.setAttribute('class', li_class) }}>
+    <a class="big-social-media__btn" href="javascript:window.print()">
+                    <span class="big-social-media__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" width="48px" height="42px"
+                         viewBox="0 0 48 42">
+                    <title>{{ settings.link_class }} icon</title>
+                        <rect x="10" width="28" height="8"/>
+                        <path d="M0,10v17.75h10V42h28V27.75h10V10H0z M34,38H14V24h20V38z M42,20c-1.66,0-3-1.34-3-3s1.34-3,3-3s3,1.34,3,3S43.66,20,42,20z"/>
+                        <text transform="matrix(1 0 0 1 6 78)" font-size="10">Created by Plainicon</text>
+                        <text transform="matrix(1 0 0 1 6 88)" font-size="10">from the Noun Project</text>
+                     </svg>
+                     </span>
+        <span class="big-social-media__label">{{ settings.link_class }}</span>
+    </a>
+</li>

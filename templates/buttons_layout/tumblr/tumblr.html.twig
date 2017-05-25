@@ -1,0 +1,32 @@
+{#
+
+@file
+  Template for sharring button.
+  This template provides markup for unique link for content sharing button.
+   Variables:
+   - settings.link_class - contain a link name (like: email, facebook etc).Using for a css class attribute and as title of icon.
+   - settings.link  - array of current node parametrs.
+     - settings.link.url - current node url.
+     - settings.link.title - current node title.
+     - settings.link.description - current node body.
+     - settings.link.image - current node image uri.
+  - settings.link_id - link attribute (the same for each link)
+  - settings.link_rel -link attribute (the same for each link)
+#}
+
+{% set li_class = [
+'big-social-media__item',
+'big-social-media__item--' ~ settings.link_class|clean_class
+] %}
+<li{{ attributes.setAttribute('class', li_class) }}>
+    <a class="big-social-media__btn popup"{% if settings.link_id %} id="{{  settings.link_id }}" {% endif %} {% if settings.links_rel %} rel="{{ settings.links_rel }}"
+       {% endif %}href="http://tumblr.com/share?s=&amp;v=3&t={{ settings.link.title }}&amp;u={{ settings.link.url }}">
+                    <span class="big-social-media__icon">
+                      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="28" height="28" viewBox="0 0 28 28">
+                      <title>tumblr icon</title>
+                        <path d="M18.02 21.842c-2.03.052-2.422-1.396-2.44-2.446v-7.294h4.73V7.874H15.6V1.592h-3.714s-.167.053-.182.186c-.218 1.935-1.144 5.33-4.988 6.688v3.637h2.927v7.677c0 2.8 1.7 6.7 7.3 6.6 1.863-.03 3.934-.795 4.392-1.453l-1.22-3.54c-.52.213-1.415.413-2.115.455z"/>
+                      </svg>
+                    </span>
+        <span class="big-social-media__label">tumblr</span>
+    </a>
+</li>
